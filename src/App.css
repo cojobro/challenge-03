@@ -5,6 +5,22 @@
 }
 
 .title {
-  font-size: 3rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 38px;
   color: black;
 }
+
+/* Tablet and Desktop Overrides (min-width: 769px) */
+@media (min-width: 769px) {
+  .title {
+    font-size: 48px; /* Restore desktop title size */
+  }
+}
+
+/* Specific Desktop Overrides (none needed based on specs) */
+/* @media (min-width: 1200px) { */
+  /* Styles only for 1200px and up */
+/* } */
