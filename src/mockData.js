@@ -45,3 +45,17 @@ export const samplePosts = [
         content: '<h1>Heading</h1><p>Some paragraph text</p><h2>Subheading</h2><p>More paragraph text</p>',
     },
 ];
+
+export const setPost = (allPosts, newPost) => {
+    //check if post was in the list and then update the list
+    let found = false;
+    for (let i = 0; i < allPosts.length; i++) {
+        if (allPosts[i].id == newPost.id) {
+            allPosts[i] = newPost;
+            found = true;
+        }
+    }
+    if (!found) {
+        allPosts.unshift(newPost);
+    }
+}
