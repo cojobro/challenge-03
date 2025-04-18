@@ -29,6 +29,26 @@ input {
     box-sizing: border-box;
 }
 
+.summaryInput {
+    color: #333333;
+    border: #CCCCCC solid 1px;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 60px;
+    resize: none;
+    overflow: hidden;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 :global(.sun-editor) {
     border: #CCCCCC solid 1px !important;
     border-radius: 4px !important;
@@ -80,6 +100,10 @@ input {
     }
     
     input {
+        font-size: 16px;
+    }
+
+    .summaryInput {
         font-size: 16px;
     }
 

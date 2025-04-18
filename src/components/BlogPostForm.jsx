@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 import ReactDatePicker from 'react-datepicker';
@@ -6,8 +6,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DOMPurify from 'dompurify';
 import styles from './BlogPostForm.module.css';
 
-const BlogPostForm = ({ post, onSubmit }) => {
+const BlogPostForm = ({ post, posts, onSubmit }) => {
   const [title, setTitle] = useState(post?.title || '');
+  const [summary, setSummary] = useState(post?.summary || '');
   // store content as HTML string
   const [content, setContent] = useState(post?.content || '');
   const [author, setAuthor] = useState(post?.author || '');
@@ -20,6 +21,7 @@ const BlogPostForm = ({ post, onSubmit }) => {
     e.preventDefault();
     const newErrors = {};
     if (!title) newErrors.title = 'Required';
+    if (!summary) newErrors.summary = 'Required';
     if (!content) newErrors.content = 'Required';
     if (!author) newErrors.author = 'Required';
     if (!date) newErrors.date = 'Required';
@@ -30,7 +32,15 @@ const BlogPostForm = ({ post, onSubmit }) => {
       const sanitizedContent = DOMPurify.sanitize(content);
       // format date as YYYY-MM-DD
       const dateString = date.toISOString().split('T')[0];
-      onSubmit({ title, content: sanitizedContent, author, date: dateString });
+      // copy post to a new object and modify it
+      const newPost = {...post};
+      newPost.title = title;
+      newPost.summary = summary;
+      newPost.content = sanitizedContent;
+      newPost.author = author;
+      newPost.date = dateString;
+
+      onSubmit(newPost, posts);
     }
   };
 
@@ -44,6 +54,17 @@ const BlogPostForm = ({ post, onSubmit }) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         {errors.title && <p className={styles.error}>{errors.title}</p>}
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="summary">Summary</label>
+        <textarea
+            className={styles.summaryInput}
+            value={summary}
+            onChange={e => setSummary(e.target.value)}
+            rows={3}
+        />
+        {errors.summary && <p className={styles.error}>{errors.summary}</p>}
       </div>
 
       <div className={styles.formGroup}>
