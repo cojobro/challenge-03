@@ -13,6 +13,21 @@
   color: black;
 }
 
+.editButton {
+  position: absolute;
+  z-index: 1;
+  margin-top: 45px;
+  margin-right: 50px;
+  top: 0;
+  right: 0;
+  color: white;
+  background-color: royalblue;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: hidden;
+  font-size: 20px;
+}
+
 /* Tablet and Desktop Overrides (min-width: 769px) */
 @media (min-width: 769px) {
   .title {

@@ -46,16 +46,16 @@ export const samplePosts = [
     },
 ];
 
-export const setPost = (allPosts, newPost) => {
+export const setPost = (newPost) => {
     //check if post was in the list and then update the list
     let found = false;
-    for (let i = 0; i < allPosts.length; i++) {
-        if (allPosts[i].id == newPost.id) {
-            allPosts[i] = newPost;
+    for (let i = 0; i < samplePosts.length; i++) {
+        if (samplePosts[i].id == newPost.id) {
+            samplePosts[i] = newPost;
             found = true;
         }
     }
     if (!found) {
-        allPosts.unshift(newPost);
+        samplePosts.unshift(newPost);
     }
 }
