@@ -51,7 +51,7 @@ const BlogPostForm = ({ post, onSubmit }) => {
         <SunEditor
           setContents={content}
           onChange={setContent}
-          height="500px"
+          height="300px"
           setOptions={{
             // define the exact toolbar rows and buttons you want:
             buttonList: [
@@ -69,8 +69,7 @@ const BlogPostForm = ({ post, onSubmit }) => {
               ['fullScreen', 'codeView']
             ],
             // you can also tweak other options here:
-            defaultStyle: 'font-family:Arial; font-size:14px;',
-            font: ['Arial', 'Helvetica', 'Times New Roman', 'Courier New'],
+            defaultStyle: 'font-family:Arial; font-size:16px;',
             formats: ['p', 'h1', 'h2', 'h3', 'blockquote']
           }}
         />
@@ -96,9 +95,8 @@ const BlogPostForm = ({ post, onSubmit }) => {
           placeholderText="Select a date"
         />
         {errors.date && <p className={styles.error}>{errors.date}</p>}
-      </div>
-
-      <button type="submit">{editing ? 'Update' : 'Create'}</button>
+      </div>   
+      <button className={styles.submitButton} type="submit">{editing ? 'Update Post' : 'Create Post'}</button>
     </form>
   );
 };
